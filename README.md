@@ -274,9 +274,8 @@ Nếu chạy seeder, bạn sẽ có tài khoản:
 | Vai trò | Email | Mật khẩu |
 |--------|-------|---------|
 | Admin | admin@example.com | password |
-| User | user@example.com | password |
+| User | bao@gmail.com | 12345678 |
 
-*(Thay đổi mật khẩu sau khi đăng nhập lần đầu)*
 
 ## 📝 Cấu Trúc Routes
 
