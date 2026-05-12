@@ -1,59 +1,384 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Web Linh Phụ Kiện - E-Commerce Platform
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Website bán phụ kiện kỹ thuật số được xây dựng bằng **Laravel 12** - một framework PHP hiện đại và mạnh mẽ.
 
-## About Laravel
+## 📋 Mục Đích Dự Án
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Dự án này là một nền tảng thương mại điện tử hoàn chỉnh cho việc bán các sản phẩm phụ kiện. Nó cung cấp các tính năng cho cả khách hàng và quản trị viên:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Cho khách hàng**: Duyệt sản phẩm, thêm vào giỏ hàng, đặt hàng, quản lý đơn hàng
+- **Cho quản trị viên**: Quản lý sản phẩm, danh mục, xem đơn hàng
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🛠️ Công Nghệ Sử Dụng
 
-## Learning Laravel
+### Backend
+- **Laravel 12** - Framework PHP
+- **PHP 8.2+** - Ngôn ngữ lập trình
+- **SQLite** - Cơ sở dữ liệu (mặc định)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Frontend
+- **Blade Template** - View engine của Laravel
+- **Bootstrap 5** - CSS Framework (có thể tuỳ chọn)
+- **Vite** - Build tool cho assets
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Dependencies chính
+- Laravel Framework 12.0
+- Laravel Tinker 2.10.1
+- Faker PHP - Tạo dữ liệu giả
+- PHPUnit - Testing Framework
 
-## Laravel Sponsors
+## 📁 Cấu Trúc Thư Mục
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```
+web-linh-phu-kien/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/        # Controllers xử lý logic
+│   │   │   ├── ProductController.php    # Sản phẩm
+│   │   │   ├── CartController.php       # Giỏ hàng
+│   │   │   └── AdminController.php      # Admin
+│   │   └── Middleware/         # Middleware
+│   ├── Models/                 # Eloquent Models
+│   │   ├── Product.php         # Model Sản phẩm
+│   │   ├── Category.php        # Model Danh mục
+│   │   ├── Order.php           # Model Đơn hàng
+│   │   ├── OrderItem.php       # Model Chi tiết đơn hàng
+│   │   └── User.php            # Model Người dùng
+│   └── Providers/              # Service Providers
+├── config/                     # File cấu hình
+├── database/
+│   ├── migrations/             # Migrations tạo bảng
+│   └── seeders/                # Seeders tạo dữ liệu
+├── resources/
+│   ├── views/                  # Blade templates
+│   │   ├── admin/              # Admin views
+│   │   ├── welcome.blade.php   # Trang chủ
+│   │   ├── products.blade.php  # Danh sách sản phẩm
+│   │   ├── cart.blade.php      # Giỏ hàng
+│   │   ├── orders.blade.php    # Đơn hàng
+│   │   └── ...
+│   ├── css/                    # CSS files
+│   └── js/                     # JavaScript files
+├── routes/
+│   ├── web.php                 # Web routes
+│   └── console.php             # Console routes
+├── storage/                    # File storage
+├── tests/                      # Test files
+├── public/                     # Public directory (web root)
+├── .env.example               # Ví dụ file .env
+├── composer.json              # Dependencies PHP
+├── package.json               # Dependencies Node.js
+├── vite.config.js             # Vite configuration
+└── artisan                    # Laravel CLI
 
-### Premium Partners
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 🗄️ Cơ Sở Dữ Liệu
 
-## Contributing
+### Các Bảng Chính
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+| Bảng | Mô Tả |
+|------|--------|
+| `users` | Thông tin người dùng (khách hàng & admin) |
+| `products` | Sản phẩm bán trên website |
+| `categories` | Danh mục sản phẩm |
+| `orders` | Đơn hàng từ khách hàng |
+| `order_items` | Chi tiết sản phẩm trong mỗi đơn hàng |
+| `cache` | Bảng cache |
+| `jobs` | Bảng queue jobs |
 
-## Code of Conduct
+## 🚀 Hướng Dẫn Cài Đặt & Cấu Hình
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 1. Yêu Cầu Hệ Thống
 
-## Security Vulnerabilities
+- **PHP**: 8.2 trở lên
+- **Composer**: Phiên bản mới nhất
+- **Node.js & npm**: Để build frontend assets
+- **SQLite**: (hoặc MySQL/PostgreSQL tuỳ chọn)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 2. Clone Dự Án
 
-## License
+```bash
+# Clone từ git repository (nếu có)
+git clone https://github.com/yourusername/web-linh-phu-kien.git
+cd web-linh-phu-kien
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Hoặc sao chép thủ công vào thư mục
+```
+
+### 3. Tạo File Cấu Hình `.env`
+
+```bash
+# Copy file ví dụ thành .env
+cp .env.example .env
+```
+
+**Hoặc chỉnh sửa nội dung .env:**
+
+```env
+APP_NAME="Web Linh Phụ Kiện"
+APP_ENV=local
+APP_DEBUG=true
+APP_URL=http://localhost:8000
+
+# Database configuration (SQLite - mặc định)
+DB_CONNECTION=sqlite
+DB_DATABASE=database/database.sqlite
+
+# Hoặc nếu dùng MySQL:
+# DB_CONNECTION=mysql
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=web-linh-phu-kien
+# DB_USERNAME=root
+# DB_PASSWORD=
+
+# Session & Cache
+SESSION_DRIVER=database
+CACHE_STORE=database
+QUEUE_CONNECTION=database
+```
+
+### 4. Cài Đặt Dependencies
+
+#### PHP Dependencies:
+```bash
+composer install
+```
+
+#### Node.js Dependencies (cho frontend):
+```bash
+npm install
+```
+
+### 5. Khởi Tạo Ứng Dụng
+
+#### Bước 1: Tạo Application Key
+```bash
+php artisan key:generate
+```
+
+#### Bước 2: Tạo Database File (nếu dùng SQLite)
+```bash
+touch database/database.sqlite
+```
+
+#### Bước 3: Chạy Database Migrations
+```bash
+php artisan migrate
+```
+
+#### Bước 4: (Tuỳ chọn) Seed dữ liệu giả
+```bash
+php artisan db:seed
+```
+
+#### Bước 5: Build Frontend Assets
+```bash
+npm run build
+```
+
+### 6. Khởi Động Server
+
+#### Cách 1: Dùng Artisan Command
+```bash
+php artisan serve
+```
+Server sẽ chạy tại `http://localhost:8000`
+
+#### Cách 2: Dùng XAMPP (hoặc WAMP/LAMP)
+- Đặt thư mục vào `htdocs` (XAMPP) hoặc thư mục root tương ứng
+- Trỏ Virtual Host đến thư mục `public`
+- Cấu hình Virtual Host (Optional)
+
+**Ví dụ cấu hình Apache (httpd-vhosts.conf):**
+```apache
+<VirtualHost *:80>
+    ServerName linh-phu-kien.local
+    DocumentRoot "D:/xampp/htdocs/web-linh-phu-kien/public"
+    
+    <Directory "D:/xampp/htdocs/web-linh-phu-kien/public">
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+```
+
+## 📱 Tính Năng Chính
+
+### Cho Khách Hàng (User)
+- ✅ Xem danh sách sản phẩm
+- ✅ Tìm kiếm & lọc sản phẩm theo danh mục
+- ✅ Xem chi tiết sản phẩm
+- ✅ Thêm/xóa sản phẩm vào giỏ hàng
+- ✅ Cập nhật số lượng trong giỏ hàng
+- ✅ Thanh toán & đặt hàng
+- ✅ Xem lịch sử đơn hàng
+
+### Cho Quản Trị Viên (Admin)
+- ✅ Dashboard hiển thị thống kê
+- ✅ Quản lý sản phẩm (Thêm, sửa, xóa)
+- ✅ Quản lý danh mục sản phẩm
+- ✅ Xem danh sách đơn hàng
+- ✅ Quản lý người dùng
+
+### Authentication
+- ✅ Đăng ký tài khoản mới
+- ✅ Đăng nhập
+- ✅ Đăng xuất
+- ✅ Phân quyền (User/Admin)
+
+## 🔧 Các Lệnh Hữu Ích
+
+### Development
+```bash
+# Xem hết các route
+php artisan route:list
+
+# Tạo migration mới
+php artisan make:migration create_table_name
+
+# Tạo model mới
+php artisan make:model ModelName
+
+# Tạo controller mới
+php artisan make:controller ControllerName
+
+# Chạy tests
+php artisan test
+
+# Xóa cache
+php artisan cache:clear
+
+# Clear tất cả cache
+php artisan optimize:clear
+```
+
+### Production
+```bash
+# Optimize ứng dụng cho production
+php artisan optimize
+
+# Build assets tối ưu
+npm run build
+
+# Set maintenance mode
+php artisan down
+php artisan up
+```
+
+## 🗝️ Tài Khoản Mặc Định
+
+Nếu chạy seeder, bạn sẽ có tài khoản:
+
+| Vai trò | Email | Mật khẩu |
+|--------|-------|---------|
+| Admin | admin@example.com | password |
+| User | user@example.com | password |
+
+*(Thay đổi mật khẩu sau khi đăng nhập lần đầu)*
+
+## 📝 Cấu Trúc Routes
+
+### Routes Công Khai
+```
+GET  /                      - Trang chủ / Danh sách sản phẩm
+GET  /san-pham              - Danh sách sản phẩm
+GET  /san-pham/{id}         - Chi tiết sản phẩm
+GET  /cart                  - Xem giỏ hàng
+POST /cart/add/{id}         - Thêm vào giỏ hàng
+```
+
+### Routes Yêu Cầu Authentication
+```
+GET  /dashboard             - Dashboard người dùng
+GET  /don-hang              - Lịch sử đơn hàng
+POST /checkout              - Thanh toán
+```
+
+### Routes Auth
+```
+GET  /dang-ky               - Trang đăng ký
+POST /register              - Xử lý đăng ký
+GET  /dang-nhap             - Trang đăng nhập
+POST /login-action          - Xử lý đăng nhập
+POST /logout                - Đăng xuất
+```
+
+### Routes Admin
+```
+GET  /admin                 - Dashboard admin
+GET  /admin/san-pham        - Danh sách sản phẩm
+GET  /admin/them-moi        - Form thêm sản phẩm
+POST /admin/luu-san-pham    - Lưu sản phẩm
+GET  /admin/sua/{id}        - Form chỉnh sửa
+PUT  /admin/cap-nhat/{id}   - Cập nhật sản phẩm
+```
+
+## 🔐 Bảo Mật
+
+- ✅ SQL Injection Prevention (sử dụng Eloquent ORM)
+- ✅ CSRF Protection (tất cả POST/PUT/DELETE yêu cầu token)
+- ✅ Password Hashing (bcrypt)
+- ✅ Authentication & Authorization Middleware
+- ✅ Input Validation
+
+## 📊 Middleware
+
+| Middleware | Mục Đích |
+|-----------|---------|
+| `auth` | Yêu cầu người dùng phải đăng nhập |
+| `guest` | Chỉ cho phép người dùng chưa đăng nhập |
+| `admin` | Chỉ cho phép admin access |
+| `web` | Middleware mặc định cho web routes |
+
+## 🐛 Troubleshooting
+
+### Lỗi: "No application key has been generated"
+```bash
+php artisan key:generate
+```
+
+### Lỗi: "Class not found"
+```bash
+composer dump-autoload
+```
+
+### Lỗi: "Permission denied" trên storage
+```bash
+chmod -R 755 storage bootstrap/cache
+```
+
+### Lỗi: Trang không tìm thấy (404)
+- Kiểm tra routes trong `routes/web.php`
+- Clear route cache: `php artisan route:clear`
+- Kiểm tra Virtual Host configuration
+
+### Database không synchronize
+```bash
+# Reset migrations và seed lại
+php artisan migrate:fresh --seed
+```
+
+## 📖 Tài Liệu & Liên Kết
+
+- [Laravel Documentation](https://laravel.com/docs)
+- [Blade Template Syntax](https://laravel.com/docs/blade)
+- [Eloquent ORM](https://laravel.com/docs/eloquent)
+- [Migrations](https://laravel.com/docs/migrations)
+
+## 👥 Tác Giả & Liên Hệ
+
+**Email**: nguyenquocbao6204@gmail.com
+
+## 📄 License
+
+MIT License - Xem file [LICENSE](LICENSE) để biết thêm chi tiết.
+
+---
+
+**Ghi Chú**: Đây là phiên bản development. Trước khi triển khai lên production, hãy đảm bảo:
+- Đổi `APP_DEBUG=false` trong `.env`
+- Cài đặt SSL/HTTPS
+- Cấu hình Cơ sở dữ liệu Production
+- Tối ưu hoá Performance

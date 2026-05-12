@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            // Thêm cột tên danh mục (ví dụ: Piano, Guitar, Organ)
+            // Thêm cột tên danh mục (ví dụ: iphone ,samsung)
             $table->string('name'); 
             
             // Thêm cột trạng thái (mặc định là Active như trong hình)
